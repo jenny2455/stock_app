@@ -1,2 +1,24 @@
-<h1>Hello!</h1>
-<p>This is my first rails app!</p>
+<h1>Stonk Search</h1>
+
+<br>
+<%= form_tag root_path, :method => "POST" do %>
+    <%= text_field_tag 'ticker', nil, placeholder: "Enter Ticker Symbol", size: 50%>
+    <%= submit_tag "Lookup" %>
+<% end %>
+
+<br>
+
+
+<% if @stock %>
+    Company Name: <%= @stock.company_name%> <br>
+    Latest Price: $<%= @stock.latest_price%> <br>
+    Market Cap: <%= @stock.market_cap%> <br>
+    PE Ratio: <%= @stock.pe_ratio%> <br>
+<% elsif @nothing %>
+    <%= @nothing %>
+<% end %>
+
+
+<% if @error %>
+    <%= @error %>
+<% end %>
