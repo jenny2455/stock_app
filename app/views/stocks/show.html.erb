@@ -11,22 +11,19 @@
 
     <% else %>
 
-        <img src="<%= @logo.url %>">
-
-        <strong><%= @ticker.symbol%> </strong><br><br>
-        
+        <img src="<%= @logo.url %>"> <br>
+ 
         Company Name: <%= @ticker.company_name %> <br>
-        
-        Description: <%= @company.description%> <br>
-  
+      
         Latest Price: $<%= number_with_precision(@ticker.latest_price, :precision => 2, :delimiter => ",") %> <br>
         Market Cap: $<%= number_with_precision(@ticker.market_cap, :precision => 0, :delimiter => ",") %> <br>
-        
-        Employee Count: <%= number_with_precision(@stats.employees, :precision => 0, :delimiter => ",")  %> <br>
         TTM EPS: $<%= number_with_precision(@stats.ttm_eps, :precision => 2, :delimiter => ",")  %> <br>
         PE Ratio:  <%= number_with_precision(@stats.pe_ratio, :precision => 2, :delimiter => ",") %> <br>
-        Next Earnings Date: <%= @stats.next_earnings_date %> <br>
         Dividend Yield: <%= number_with_precision(@stats.dividend_yield, :precision => 2, :delimiter => ",") %> % <br>
+        Next Earnings Date: <%= @stats.next_earnings_date %> <br>
+        Employee Count: <%= number_with_precision(@stats.employees, :precision => 0, :delimiter => ",")  %> <br>
+        <br>
+        Description: <%= @company.description%> <br>
 
       <%# <% @newsarr = @news.news%>
 
