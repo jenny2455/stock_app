@@ -1,0 +1,54 @@
+
+<% @ticker = StockQuote::Stock.quote(@stock.ticker) %>
+<% @logo = StockQuote::Stock.logo(@stock.ticker)%>
+<% @company = StockQuote::Stock.company(@stock.ticker)%>
+<% @stats = StockQuote::Stock.stats(@stock.ticker)%>
+<%# <% @news = StockQuote::Stock.news(@stock.ticker)%> 
+
+
+  <% if !@ticker %>
+        The ticker: <%= @stock.ticker %> does not exist.
+
+    <% else %>
+
+        <img src="<%= @logo.url %>">
+
+        <strong><%= @ticker.symbol%> </strong><br><br>
+        
+        Company Name: <%= @ticker.company_name %> <br>
+        
+        Description: <%= @company.description%> <br>
+  
+        Latest Price: $<%= number_with_precision(@ticker.latest_price, :precision => 2, :delimiter => ",") %> <br>
+        Market Cap: $<%= number_with_precision(@ticker.market_cap, :precision => 0, :delimiter => ",") %> <br>
+        
+        Employee Count: <%= number_with_precision(@stats.employees, :precision => 0, :delimiter => ",")  %> <br>
+        TTM EPS: $<%= number_with_precision(@stats.ttm_eps, :precision => 2, :delimiter => ",")  %> <br>
+        PE Ratio:  <%= number_with_precision(@stats.pe_ratio, :precision => 2, :delimiter => ",") %> <br>
+        Next Earnings Date: <%= @stats.next_earnings_date %> <br>
+        Dividend Yield: <%= number_with_precision(@stats.dividend_yield, :precision => 2, :delimiter => ",") %> % <br>
+
+      <%# <% @newsarr = @news.news%>
+
+      <%# <table class="table table-striped table-bordered table-hover"> %>
+        <%# <thead class="thead-dark">
+          <tr>
+            <th>Date</th>
+            <th>Headline</th>
+          </tr>
+        </thead>
+        <tbody> %>
+            <%# <% @newsarr.each do |news|%> 
+              <%# <tr>
+                <td> <%= Time.at(news["datetime"])%> </td>
+                <%# <td> <%= link_to news["headline"], news["url"]  </td> %>
+              <%# </tr> %>
+            <%# <% end %> 
+        <%# </tbody> %>
+      <%# </table>         %>
+  <% end %>
+
+      <br>
+
+<%= link_to 'Edit', edit_stock_path(@stock) %> |
+<%= link_to 'Back', stocks_path %>
