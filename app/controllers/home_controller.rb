@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    api_key = 'pk_7f77bb722f0a42b6a2088529f6d57d96'
+    api_key = 'pk_e25ea171e4bc49b093ea9de578d08b64'
     @api = StockQuote::Stock.new(api_key: api_key)
     
     if params[:ticker] == "" 
