@@ -12,8 +12,6 @@
 <% if @stock %>
     Company Name: <%= @stock.company_name%> <br>
     Latest Price: $<%= @stock.latest_price%> <br>
-    Market Cap: <%= @stock.market_cap%> <br>
-    PE Ratio: <%= @stock.pe_ratio%> <br>
 <% elsif @nothing %>
     <%= @nothing %>
 <% end %>
